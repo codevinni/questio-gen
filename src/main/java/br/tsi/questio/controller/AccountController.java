@@ -19,8 +19,10 @@ public class AccountController {
 	@RequestMapping("/doLogin")
 	public String doLogin(Account user, HttpSession session) {
 
-		if (new AccountDAO().authenticate(user) != null) {
-			session.setAttribute("authUser", user);
+		Account authenticatedUser = new AccountDAO().authenticate(user);
+		
+		if (authenticatedUser != null) {
+			session.setAttribute("authUser", authenticatedUser);
 			return "redirect:teste";
 		}
 		

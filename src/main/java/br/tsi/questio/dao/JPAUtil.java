@@ -6,7 +6,7 @@ import jakarta.persistence.Persistence;
 
 public final class JPAUtil{
 	
-	private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("questio");
+	private final static EntityManagerFactory emf = Persistence.createEntityManagerFactory("questio");
 
 	private JPAUtil() {
 		throw new UnsupportedOperationException("Utility Class");
