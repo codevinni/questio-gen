@@ -3,20 +3,16 @@ package br.tsi.questio.enums;
 public enum UserRole {
 
 	ADMIN("admin"),
-	USER("user"),
-	UNDEFINED("undefined role");
+	USER("user");
 
-	private String name;
+	private String label;
 	
-	private UserRole(String name) {
-		this.name = name;
+	private UserRole(String label) {
+		this.label = label;
 	}
 
-	public String getName() {
-		return name;
+	public String getLabel() {
+		return label;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
 }

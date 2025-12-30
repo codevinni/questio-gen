@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import br.tsi.questio.dao.AccountDAO;
 import br.tsi.questio.model.Account;
 import jakarta.servlet.http.HttpSession;
-import jakarta.validation.Valid;
 
 @Controller
 public class AccountController {
@@ -23,7 +22,7 @@ public class AccountController {
 		
 		if (authenticatedUser != null) {
 			session.setAttribute("authUser", authenticatedUser);
-			return "redirect:teste";
+			return "redirect:users";
 		}
 		
 		return "redirect:login";
@@ -32,12 +31,6 @@ public class AccountController {
 	@RequestMapping("/doLogout")
 	public String doLogout(HttpSession session) {
 		session.invalidate();
-		return "redirect:login";
-	}
-	
-	@RequestMapping("createNewUser")
-	public String create(@Valid Account user) {
-		new AccountDAO().add(user);
 		return "redirect:login";
 	}
 	

@@ -26,7 +26,7 @@ public class Account {
 	
 	@Enumerated(EnumType.STRING)
 	@NotNull
-	private UserRole role = UserRole.UNDEFINED;
+	private UserRole role;
 	
 	/**
 	 * @return the username

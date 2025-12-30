@@ -16,10 +16,10 @@
 		</c:if>
 		
 		<c:if test="${authUser.role eq 'ADMIN'}">
-			<a href="">Gerenciar Usuários</a>
-			<a href="">Disciplinas</a>
-			<a href="">Materias</a>
-			<a href="">Questões</a>
+			<a href="users">Gerenciar Usuários</a>
+			<a href="disciplines">Disciplinas</a>
+			<a href="subjects">Materias</a>
+			<a href="questions">Questões</a>
 			<a href="">Relatório Geral</a>
 		</c:if>
 		
