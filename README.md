@@ -20,3 +20,19 @@ O projeto utiliza as seguintes tecnologias e bibliotecas:
 *   **Spring Security Crypto**: Para criptografia de senhas.
 *   **Maven**: Gerenciamento de dependências e build.
 *   **HTML5 & CSS3**: Estilização moderna e responsiva.
+
+## Configuração do Banco de Dados
+
+Para facilitar a configuração do ambiente, um script SQL de backup completo está incluído na raiz do projeto: `sample_database_script.sql`.
+
+### Como Utilizar
+1.  Crie um banco de dados vazio no PostgreSQL (ex: `questio_db`).
+2.  Execute o script `sample_database_script.sql` neste banco.
+
+O script irá criar todas as tabelas e sequências necessárias, além de popular o banco com dados iniciais (usuários, matérias, questões).
+
+### Notas Importantes
+*   **Senhas**: As senhas dos usuários são armazenadas utilizando um hash simples para fins de demonstração acadêmica.
+*   **Acesso Admin**:
+    *   **Usuário**: `admin`
+    *   **Senha**: `admin`
