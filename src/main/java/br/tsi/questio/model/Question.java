@@ -14,8 +14,8 @@ import jakarta.validation.constraints.NotNull;
 public class Question {
 
 	@Id
-    @SequenceGenerator(name = "question_id", sequenceName = "question_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "question_seq")
+    @SequenceGenerator(name = "question_gen", sequenceName = "question_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "question_gen")
     private Long id;
 
     @NotBlank(message = "Defina o enunciado da questão")

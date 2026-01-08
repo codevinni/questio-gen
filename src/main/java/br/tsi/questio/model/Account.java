@@ -15,8 +15,8 @@ import jakarta.validation.constraints.Size;
 public class Account {
 
 	@Id
-	@SequenceGenerator(name = "account_id", sequenceName = "account_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "account_seq")
+	@SequenceGenerator(name = "account_gen", sequenceName = "account_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "account_gen")
 	private Long id;
 	
 	@NotBlank(message = "Forneça um nome de usuário")

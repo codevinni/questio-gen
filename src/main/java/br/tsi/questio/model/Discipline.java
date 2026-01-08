@@ -11,8 +11,8 @@ import jakarta.validation.constraints.NotBlank;
 public class Discipline {
 
 	@Id
-	@SequenceGenerator(name = "discipline_id", sequenceName = "discipline_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "discipline_seq")
+	@SequenceGenerator(name = "discipline_gen", sequenceName = "discipline_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "discipline_gen")
 	private Long id;
 	
 	@NotBlank(message = "Forneça o nome da disciplina")

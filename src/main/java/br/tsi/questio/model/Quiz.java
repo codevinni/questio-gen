@@ -19,8 +19,8 @@ import jakarta.validation.constraints.Size;
 public class Quiz {
 
 	@Id
-	@SequenceGenerator(name = "quiz_id", sequenceName = "quiz_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "quiz_seq")
+	@SequenceGenerator(name = "quiz_gen", sequenceName = "quiz_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "quiz_gen")
 	private Long id;
 	
 	@NotNull

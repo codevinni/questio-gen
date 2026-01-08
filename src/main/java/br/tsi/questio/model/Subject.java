@@ -17,8 +17,8 @@ import jakarta.validation.constraints.NotNull;
 public class Subject {
 
 	@Id
-	@SequenceGenerator(name = "subject_id", sequenceName = "subject_seq", allocationSize = 1)
-	@GeneratedValue(strategy = GenerationType.AUTO, generator = "subject_seq")
+	@SequenceGenerator(name = "subject_gen", sequenceName = "subject_seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.AUTO, generator = "subject_gen")
 	private Long id;
 
 	@NotBlank(message = "Forneça o nome da matéria")
