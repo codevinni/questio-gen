@@ -107,7 +107,6 @@ public class Subject {
 
 	@Override
 	public String toString() {
-		return String.format("Subject [id=%s, name=%s, discipline=%s, grade=%s, bimester=%s]", id, name, discipline,
-				grade, bimester);
+		return String.format("Subject [id=%s]", id);
 	}
 }

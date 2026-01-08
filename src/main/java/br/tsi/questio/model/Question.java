@@ -152,9 +152,7 @@ public class Question {
 
 	@Override
 	public String toString() {
-		return String.format(
-				"Question [id=%s, statement=%s, subject=%s \n optionA=%s \n optionB=%s \n optionC=%s \n optionD=%s \n correctAnswer=%s]",
-				id, statement, subject, optionA, optionB, optionC, optionD, correctAnswer);
+		return String.format("Question [id=%s]", id);
 	}
     
 }

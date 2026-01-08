@@ -11,8 +11,8 @@
 		<a href="">Início</a>
 		
 		<c:if test="${authUser.role eq 'USER'}">
-			<a href="">Novo Teste</a>
-			<a href="">Meus Resultados</a>
+			<a href="quiz_setup">Novo Teste</a>
+			<a href="report">Meus Resultados</a>
 		</c:if>
 		
 		<c:if test="${authUser.role eq 'ADMIN'}">
@@ -20,7 +20,7 @@
 			<a href="disciplines">Disciplinas</a>
 			<a href="subjects">Materias</a>
 			<a href="questions">Questões</a>
-			<a href="">Relatório Geral</a>
+			<a href="report">Relatório Geral</a>
 		</c:if>
 		
 		<br>

@@ -16,7 +16,7 @@ public class AuthenticatorInterceptor implements HandlerInterceptor{
 		if(isAuthenticated || URI.endsWith("login") || URI.endsWith("doLogin") || URI.contains("resources"))
 			return true;
 		
-		response.sendRedirect("login");
+		response.sendRedirect("/questiogen/login");
 		return false;
 	}
 
