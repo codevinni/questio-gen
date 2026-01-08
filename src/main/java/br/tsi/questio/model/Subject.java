@@ -21,18 +21,18 @@ public class Subject {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "subject_seq")
 	private Long id;
 
-	@NotBlank
+	@NotBlank(message = "Forneça o nome da matéria")
 	private String name;
 	
 	@ManyToOne
 	private Discipline discipline;
 	
 	@Enumerated(EnumType.STRING)
-	@NotNull
+	@NotNull(message = "A série não foi selecionada")
 	private SchoolGrade grade;
 	
 	@Enumerated(EnumType.STRING)
-	@NotNull
+	@NotNull(message = "O bimestre não foi selecionado")
 	private Bimester bimester;
 
 	/**

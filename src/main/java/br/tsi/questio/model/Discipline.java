@@ -15,7 +15,7 @@ public class Discipline {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "discipline_seq")
 	private Long id;
 	
-	@NotBlank
+	@NotBlank(message = "Forneça o nome da disciplina")
 	private String name;
 
 	/**

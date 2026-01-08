@@ -22,7 +22,7 @@ public class AccountController {
 		
 		if (authenticatedUser != null) {
 			session.setAttribute("authUser", authenticatedUser);
-			return "redirect:users";
+			return "redirect:home";
 		}
 		
 		return "redirect:login";

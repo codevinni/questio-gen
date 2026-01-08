@@ -8,7 +8,7 @@
 	
 	<nav>
 		
-		<a href="">Início</a>
+		<a href="home">Início</a>
 		
 		<c:if test="${authUser.role eq 'USER'}">
 			<a href="quiz_setup">Novo Teste</a>
@@ -31,6 +31,23 @@
 		</c:if>
 		
 		<br>
+		
+		<c:if test="${not empty errorMsg}">
+		    <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border: 1px solid #f5c6cb; text-align: center;">
+		        ${errorMsg}
+		    </div>
+		</c:if>
+		
+		<c:if test="${not empty errorsList}">
+		    <div style="background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; padding: 15px; margin: 10px; border-radius: 5px;">
+		        <ul style="margin-bottom: 0;">
+		            <c:forEach var="error" items="${errorsList}">
+		                <li>${error}</li>
+		            </c:forEach>
+		        </ul>
+		    </div>
+		</c:if>
+		
 		<br>
 	</nav>
 	

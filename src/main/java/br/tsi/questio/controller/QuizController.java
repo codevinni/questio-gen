@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.tsi.questio.dao.DAO;
 import br.tsi.questio.dao.QuestionDAO;
@@ -36,41 +37,41 @@ public class QuizController {
 	}
 	
 	@RequestMapping("/quiz_selection")
-	public String selectSubject(Model model, @RequestParam("disciplineId") Long disciplineId, @RequestParam("grade") SchoolGrade grade, @RequestParam("bimester") Bimester bimester) {
+	public String selectSubject(Model model, RedirectAttributes redirectAttributes, 
+			@RequestParam("disciplineId") Long disciplineId, @RequestParam("grade") SchoolGrade grade, @RequestParam("bimester") Bimester bimester) {
 		
 		List<Subject> subjectsList =  new SubjectDAO().filteredFind(disciplineId, grade, bimester);
 		
-		if(subjectsList != null) {
+		if(subjectsList.size() > 0) {
+			
 			model.addAttribute("subjectsList", subjectsList);
 			return "user/subject-selection";
 		}
 		
+		redirectAttributes.addFlashAttribute("errorMsg", "Nenhuma matéria cadastrada com estes filtros");
 		return "redirect:quiz_setup";
 	}
 	
 	@RequestMapping("/quiz_generate")
-	public String generateQuiz(@RequestParam("subjectId") Long subjectId, Model model, HttpSession session) {
+	public String generateQuiz(@RequestParam("subjectId") Long subjectId, Model model, HttpSession session, RedirectAttributes redirectAttributes) {
 		
 		Subject subject = new DAO<Subject>(Subject.class).searchById(subjectId);
+		List<Question> questionsList = new QuestionDAO().filteredFind(subject);
 		
-		if(subject != null) {
+		if(questionsList.size() > 0) {
 			
-			List<Question> questionsList = new QuestionDAO().filteredFind(subject);
+			Quiz quiz = new Quiz();
 			
-			if(questionsList.size() > 0) {
-				
-				Quiz quiz = new Quiz();
-				
-				quiz.setQuestions(questionsList);
-				quiz.setResult(0.0);
-				quiz.setUser((Account)session.getAttribute("authUser"));
-				
-				new DAO<Quiz>(Quiz.class).add(quiz);
-				
-				return "redirect:/quiz_execute?id=" + quiz.getId();
-			}
+			quiz.setQuestions(questionsList);
+			quiz.setResult(0.0);
+			quiz.setUser((Account)session.getAttribute("authUser"));
+			
+			new DAO<Quiz>(Quiz.class).add(quiz);
+			
+			return "redirect:/quiz_execute?id=" + quiz.getId();
 		}
-		
+	
+		redirectAttributes.addFlashAttribute("errorMsg", "Não há questões suficientes para a matéria selecionada");
 		return "redirect:quiz_setup";
 	}
 	

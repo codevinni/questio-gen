@@ -1,23 +1,55 @@
 package br.tsi.questio.interceptor;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.web.servlet.HandlerInterceptor;
 
+import br.tsi.questio.enums.UserRole;
+import br.tsi.questio.model.Account;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class AuthenticatorInterceptor implements HandlerInterceptor{
 
+	private static final List<String> USER_ROUTES = Arrays.asList(
+			"/quiz_setup", "/quiz_selection", "/quiz_generate", "/quiz_execute", 
+			"/quiz_finish", "/quiz_detail", "/report", "/doLogout", "/home", "/error" );
+	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		
-		final String URI = request.getRequestURI();
-		boolean isAuthenticated = request.getSession().getAttribute("authUser") != null;
+		String path = request.getServletPath();
+		String context = request.getContextPath();
 		
-		if(isAuthenticated || URI.endsWith("login") || URI.endsWith("doLogin") || URI.contains("resources"))
-			return true;
-		
-		response.sendRedirect("/questiogen/login");
-		return false;
+		Account user = (Account)request.getSession().getAttribute("authUser");
+	
+		if(user == null) {
+			
+			if(path.equals("/login") || path.equals("/doLogin") || path.equals("/error") || path.contains("/resources"))
+				return true;
+			
+			response.sendRedirect(context + "/login");
+			return false;
+			
+		} 
+		else {
+			
+			if(user.getRole().equals(UserRole.USER)) {
+				
+				if(USER_ROUTES.contains(path))
+					return true;
+				
+				response.sendRedirect(context + "/error");
+				return false;
+				
+			}
+			
+			if(user.getRole().equals(UserRole.ADMIN))
+				return true;
+			
+			return false;
+		}
 	}
 
 }

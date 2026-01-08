@@ -18,21 +18,20 @@ public class Question {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "question_seq")
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "Defina o enunciado da questão")
     @Column(columnDefinition = "TEXT") 
     private String statement;
 
     @ManyToOne
-    @NotNull
     private Subject subject;
 
-    @NotBlank
+    @NotBlank(message = "Defina a opção A")
     private String optionA;
-    @NotBlank
+    @NotBlank(message = "Defina a opção B")
     private String optionB;
-    @NotBlank
+    @NotBlank(message = "Defina a opção C")
     private String optionC;
-    @NotBlank
+    @NotBlank(message = "Defina a opção D")
     private String optionD;
 
     @NotNull

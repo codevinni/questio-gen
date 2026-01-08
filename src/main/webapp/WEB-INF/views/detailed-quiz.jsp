@@ -13,11 +13,14 @@
 
     <div style="background-color: #f4f4f4; padding: 20px; margin-bottom: 30px;">
         <h2>Resumo do Desempenho</h2>
+        <p><strong>Disciplina:</strong> ${q.questions[0].subject.discipline.name}</p>
         <p><strong>Matéria:</strong> ${quiz.questions[0].subject.name}</p>
         <p><strong>Estudante:</strong> ${quiz.user.username}</p>
         <p><strong>Nota Final:</strong> ${quiz.result}</p>
         <p><strong>Status:</strong> ${quiz.finishedAt != null ? 'Finalizado' : 'Em aberto'}</p>
-        <p><strong>Concluído em:</strong> ${quiz.finishedAt}</p>
+        
+        <p><strong>Iniciado em:</strong> ${quiz.formattedCreatedAt}</p>
+        <p><strong>Concluído em:</strong> ${quiz.formattedFinishedAt}</p>
     </div>
 
     <hr>

@@ -1,6 +1,7 @@
 package br.tsi.questio.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -77,6 +78,14 @@ public class Quiz {
 		return finishedAt;
 	}
 
+	public String getFormattedFinishedAt() {
+	    return this.finishedAt == null ? "" : this.finishedAt.format(DateTimeFormatter.ofPattern("dd/MM/yyyy 'às' HH:mm"));
+	}
+	
+	public String getFormattedCreatedAt() {
+	    return this.createdAt.format(DateTimeFormatter.ofPattern("dd/MM/yyyy 'às' HH:mm"));
+	}
+	
 	/**
 	 * @param id the id to set
 	 */

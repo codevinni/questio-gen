@@ -9,7 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class Account {
@@ -19,13 +19,15 @@ public class Account {
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "account_seq")
 	private Long id;
 	
-	@NotBlank
+	@NotBlank(message = "Forneça um nome de usuário")
+	@Size(max = 20, message = "O nome de usuário deve ter no máximo 20 caracteres")
 	private String username;
-	@NotBlank
+	
+	@NotBlank(message = "Forneça uma senha")
+	@Size(min = 5, message = "A senha deve ter no mínimo 5 caracteres")
 	private String password;
 	
 	@Enumerated(EnumType.STRING)
-	@NotNull
 	private UserRole role;
 	
 	/**
