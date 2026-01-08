@@ -24,14 +24,12 @@ public class AuthenticatorInterceptor implements HandlerInterceptor{
 		
 		Account user = (Account)request.getSession().getAttribute("authUser");
 	
+		if(path.contains("/resources") || path.equals("/login") || path.equals("/doLogin") || path.equals("/error") )
+			return true;
+		
 		if(user == null) {
-			
-			if(path.equals("/login") || path.equals("/doLogin") || path.equals("/error") || path.contains("/resources"))
-				return true;
-			
 			response.sendRedirect(context + "/login");
 			return false;
-			
 		} 
 		else {
 			
