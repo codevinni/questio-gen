@@ -2,6 +2,8 @@
 
 **Questio Gen** é uma plataforma acadêmica desenvolvida para facilitar a geração e o gerenciamento de questionários educacionais. O sistema permite que administradores cadastrem disciplinas, matérias e questões, enquanto estudantes podem gerar testes personalizados baseados em seus tópicos de estudo e acompanhar seu desempenho através de relatórios.
 
+<img width="1743" height="865" alt="image" src="https://github.com/user-attachments/assets/54c200d6-9695-4ff5-9855-7e7f89044b5d" />
+
 ## Sobre
 
 Este projeto foi desenvolvido como parte de um trabalho acadêmico com o objetivo de demonstrar a implementação de uma aplicação web robusta utilizando o ecossistema **Java Spring**.
@@ -91,7 +93,7 @@ Para facilitar a configuração do ambiente, um script SQL de backup completo es
 3. O script irá criar todas as tabelas e sequências necessárias, além de popular o banco com dados iniciais (usuários, matérias, questões).
 
 4. Configure as credenciais do banco de dados em `src/main/java/META-INF/persistence.xml` e `src/main/java/br/tsi/questio/dao/JPAUtil.java`:
-   - URL de conexão (exemplo: jdbc:postgresql://localhost:5432/questiogen)
+   - URL de conexão (ex: jdbc:postgresql://localhost:5432/questiogen)
    - Nome do banco de dados
    - Usuário
    - Senha
@@ -165,8 +167,6 @@ Após executar o script SQL de backup, você poderá acessar com as seguintes cr
 **Acesso Administrador:**
 - **Usuário**: `admin`
 - **Senha**: `admin`
-
-> **⚠️ Importante**: Altere essas credenciais em ambiente de produção!
 
 ## Observações Importantes
 
