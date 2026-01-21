@@ -3,7 +3,15 @@
 -- Usage: Run this script to completely rebuild the database structure and populate it with data.
 
 -- =========================================================================================================
--- 0. DROPS (CLEANUP)
+-- 0. ENCODING SETUP
+-- =========================================================================================================
+
+-- Force UTF-8 encoding for this session to ensure special characters are imported correctly
+SET CLIENT_ENCODING TO 'UTF8';
+SET NAMES 'UTF8';
+
+-- =========================================================================================================
+-- 1. DROPS (CLEANUP)
 -- =========================================================================================================
 
 DROP TABLE IF EXISTS quiz_question CASCADE;
@@ -20,7 +28,7 @@ DROP SEQUENCE IF EXISTS discipline_seq;
 DROP SEQUENCE IF EXISTS account_seq;
 
 -- =========================================================================================================
--- 1. SEQUENCES
+-- 2. SEQUENCES
 -- Matches 'sequenceName' in @SequenceGenerator annotations
 -- =========================================================================================================
 
@@ -31,7 +39,7 @@ CREATE SEQUENCE question_seq START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE quiz_seq START WITH 1 INCREMENT BY 1;
 
 -- =========================================================================================================
--- 2. TABLES
+-- 3. TABLES
 -- =========================================================================================================
 
 -- Table: Account
@@ -97,7 +105,7 @@ CREATE TABLE quiz_question (
 );
 
 -- =========================================================================================================
--- 3. SEED DATA
+-- 4. SEED DATA
 -- =========================================================================================================
 
 -- Users
@@ -188,7 +196,7 @@ INSERT INTO quiz_question(quiz_id, questions_id) VALUES (2, 25);
 INSERT INTO quiz_question(quiz_id, questions_id) VALUES (2, 26);
 
 -- =========================================================================================================
--- 4. SEQUENCE RESET
+-- 5. SEQUENCE RESET
 -- =========================================================================================================
 
 SELECT setval('account_seq', (SELECT MAX(id) FROM account));
